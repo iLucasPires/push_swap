@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "push_swap.h": "c"
+    },
+    "files.exclude": {
+        "objects": true,
+        "libft": true,
+        "push_swap": true,
+        "checker_linux": true,
+        ".vscode": true
+    }
+}
