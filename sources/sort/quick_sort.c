@@ -1,7 +1,5 @@
 #include <push_swap.h>
 
-// quick sort algorithm with recursion and array
-
 void	swap(int *a, int *b)
 {
 	int	temp;

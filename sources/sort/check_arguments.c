@@ -59,7 +59,7 @@ void	check_is_sorting(char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-void	add_argv_to_stack(char **argv, t_stack *stack)
+void	add_argv_to_stack(char **argv, t_stack *stack, int *array_temp)
 {
 	int index;
 	int temp;
@@ -71,6 +71,7 @@ void	add_argv_to_stack(char **argv, t_stack *stack)
 		{
 			temp = ft_atoi(argv[index]);
 			insert_at_tail(temp, stack);
+			array_temp[index - 1] = temp;
 			stack->size += 1;
 		}
 		index += 1;

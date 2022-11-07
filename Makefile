@@ -4,7 +4,7 @@ OBJ_DIR =	./objects
 LIBFT =	./libft/libft.a
 
 SOURCES  =	main.c movements_a.c movements_b.c sort_stack.c check_arguments.c check_stack.c 
-SOURCES +=	create_node.c delete_node.c display_node.c double_movements.c normalize.c radix_sort.c quick_sort.c
+SOURCES +=	create_node.c delete_node.c display_node.c double_movements.c normalize.c quick_sort.c
 OBJ		=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES))
 CFLAGS =	cc -g3 -O3 
 VPATH = ./sources ./sources/linked_list ./sources/operations ./sources/sort 

@@ -74,4 +74,18 @@ void	five_elements(t_stack *stack_a, t_stack *stack_b)
 		}
 }
 
+void	more_than_five(t_stack *stack_a, t_stack *stack_b, int *array_temp)
+{
 
+	t_node *node_temp;
+	printf("more_than_five\n");
+	quick_sort(array_temp, 0, stack_a->size - 1);
+	mappping_index_stack(stack_a, array_temp);
+
+	node_temp = stack_a->head;
+	while (node_temp)
+	{
+		printf("item = %d, index = %d\n", node_temp->item, node_temp->index);
+		node_temp = node_temp->next;
+	}
+}

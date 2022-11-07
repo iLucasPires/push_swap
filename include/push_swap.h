@@ -31,6 +31,13 @@ typedef struct s_stack
 	t_node			*tail;
 }					t_stack;
 
+typedef struct s_data
+{
+	t_stack			stack_a;
+	t_stack			stack_b;
+	int				*array_temp;
+}					t_data;
+
 t_node				*get_new_node(int value);
 void				insert_at_head(int value, t_stack *stack);
 void				insert_at_tail(int value, t_stack *stack);
@@ -62,14 +69,17 @@ void				same_rotate_reverse(t_stack *stack_a, t_stack *stack_b);
 //handle error
 int					get_postion_lower_number(t_stack *stack);
 int					get_postion_bigger_number(t_stack *stack);
-void				add_argv_to_stack(char **argv, t_stack *stack);
+void				add_argv_to_stack(char **argv, t_stack *stack,
+						int *array_temp);
 void				check_is_sorting(char **argv);
 void				check_duplicate(char **argv);
 void				check_overflow(char **argv);
 int					check_is_stack_sorting(t_stack *stack);
 void				six_elements(t_stack *stack_a, t_stack *stack_b);
 void				quick_sort(int *array, int low, int high);
-void				radix_sort(t_stack *stack_a, t_stack *stack_b);
+void				more_than_five(t_stack *stack_a, t_stack *stack_b,
+						int *array_temp);
+void				mappping_index_stack(t_stack *stack, int *array_temp);
+// void				radix_sort(t_stack *stack_a, t_stack *stack_b);
 
-void				normalize(int argc, t_stack *stack);
 #endif

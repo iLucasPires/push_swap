@@ -15,10 +15,9 @@ void	check_argv(int argc, char **argv, t_stack *stack_a)
 	check_overflow(argv);
 	check_duplicate(argv);
 	check_is_sorting(argv);
-	add_argv_to_stack(argv, stack_a);
 }
 
-void	handle_list(t_stack *stack_a, t_stack *stack_b)
+void	handle_list(t_stack *stack_a, t_stack *stack_b, int *array_temp)
 {
 	if (stack_a->size == 0 && stack_b->size == 0)
 		return ;
@@ -31,20 +30,21 @@ void	handle_list(t_stack *stack_a, t_stack *stack_b)
 	else if (stack_a->size == 5)
 		five_elements(stack_a, stack_b);
 	else
-		radix_sort(stack_a, stack_b);
+		more_than_five(stack_a, stack_b, array_temp);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack stack_a;
-	t_stack stack_b;
-	int *array_temp;
-
-	create_stack(&stack_a, &stack_b);
-	check_argv(argc, argv, &stack_a);
-	handle_list(&stack_a, &stack_b);
-
-	delete_all(&stack_a);
-	delete_all(&stack_b);
+	t_data data;
+	if (argc == 1)
+		return (0);
+	create_stack(&data.stack_a, &data.stack_b);
+	check_argv(argc, argv, &data.stack_a);
+	data.array_temp = malloc(sizeof(int) * (argc - 1));
+	add_argv_to_stack(argv, &data.stack_a, data.array_temp);
+	handle_list(&data.stack_a, &data.stack_b, data.array_temp);
+	delete_all(&data.stack_a);
+	delete_all(&data.stack_b);
+	free(data.array_temp);
 	return (0);
 }

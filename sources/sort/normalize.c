@@ -1,58 +1,25 @@
 #include <push_swap.h>
 
-void mappping(t_stack *stack)
+void	mappping_index_stack(t_stack *stack, int *array_temp)
 {
-    int i = 0;
-    int j = 0;
-    int *array = (int *)malloc(sizeof(int) * stack->size);
-    t_node *temp = stack->head;
-    while (temp)
-    {
-        array[i] = temp->item;
-        temp = temp->next;
-        i++;
-    }
-    quick_sort(array, 0, stack->size - 1);
-    temp = stack->head;
-    while (temp)
-    {
-        temp->index = array[j];
-        temp = temp->next;
-        j++;
-    }
-    free(array);
-}
+	t_node	*node_temp;
+	int		index[2];
 
-void normalize(int size, t_stack *stack)
-{
-    int i = 0;
-    int j = 0;
-    int *array = (int *)malloc(sizeof(int) * size);
-    t_node *temp = stack->head;
-    while (temp)
-    {
-        array[i] = temp->item;
-        temp = temp->next;
-        i++;
-    }
-    quick_sort(array, 0, size - 1);
-    temp = stack->head;
-    while (temp)
-    {
-        temp->item = array[j];
-        temp = temp->next;
-        j++;
-    }
-    free(array);
-}
-
-void show_index(t_stack *stack)
-{
-    t_node *temp = stack->head;
-    normalize(stack->size, stack);
-    while (temp)
-    {
-        printf("%d ", temp->index);
-        temp = temp->next;
-    }
+	index[0] = 0;
+	node_temp = stack->head;
+	while (index[0] < stack->size)
+	{
+		index[1] = 0;
+		while (index[1] < stack->size)
+		{
+			if (node_temp->item == array_temp[index[1]])
+			{
+				node_temp->index = index[1];
+				break ;
+			}
+			index[1]++;
+		}
+		node_temp = node_temp->next;
+		index[0]++;
+	}
 }
