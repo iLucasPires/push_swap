@@ -14,9 +14,11 @@
 
 int	ft_isnumber(const char *s)
 {
-	int	verify;
+	int verify;
 
 	verify = 0;
+	if (((*s == '-') || (*s == '+')) && !ft_isdigit(*(s + 1)))
+		return (0);
 	if (s[ft_strlen(s) - 1] == '.')
 		return (0);
 	if (*s == '-' || *s == '+')

@@ -1,6 +1,6 @@
 #include <push_swap.h>
 
-void	swap(int *a, int *b)
+static void	swap(int *a, int *b)
 {
 	int	temp;
 
@@ -43,4 +43,27 @@ void	quick_sort(int *array, int low, int high)
 	}
 }
 
-// quick sort algorithm with recursion and linked list
+void	mappping_index_stack(t_stack *stack, int *array_temp)
+{
+	t_node	*node_temp;
+	int		index[2];
+
+	index[0] = 0;
+	node_temp = stack->head;
+	quick_sort(array_temp, 0, stack->size - 1);
+	while (index[0] < stack->size)
+	{
+		index[1] = 0;
+		while (index[1] < stack->size)
+		{
+			if (node_temp->value == array_temp[index[1]])
+			{
+				node_temp->value_normalized = index[1];
+				break ;
+			}
+			index[1]++;
+		}
+		node_temp = node_temp->next;
+		index[0]++;
+	}
+}

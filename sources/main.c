@@ -1,25 +1,8 @@
 #include <push_swap.h>
 
-void	create_stack(t_stack *stack_a, t_stack *stack_b)
+void	handle_stack(t_stack *stack_a, t_stack *stack_b, int *array_temp)
 {
-	stack_a->head = NULL;
-	stack_a->tail = NULL;
-	stack_b->head = NULL;
-	stack_b->tail = NULL;
-	stack_a->size = 0;
-	stack_b->size = 0;
-}
-
-void	check_argv(int argc, char **argv, t_stack *stack_a)
-{
-	check_overflow(argv);
-	check_duplicate(argv);
-	check_is_sorting(argv);
-}
-
-void	handle_list(t_stack *stack_a, t_stack *stack_b, int *array_temp)
-{
-	if (stack_a->size == 0 && stack_b->size == 0)
+	if (stack_a->size == 0 || stack_b->size == 1)
 		return ;
 	if (stack_a->size == 2)
 		two_elements(stack_a);
@@ -30,21 +13,32 @@ void	handle_list(t_stack *stack_a, t_stack *stack_b, int *array_temp)
 	else if (stack_a->size == 5)
 		five_elements(stack_a, stack_b);
 	else
-		more_than_five(stack_a, stack_b, array_temp);
+	{
+		mappping_index_stack(stack_a, array_temp);
+		radix_sort(stack_a, stack_b);
+	}
+}
+
+void	show_stack(t_stack *stack)
+{
+	t_node	*node_temp;
+
+	node_temp = stack->tail;
+	while (node_temp != NULL)
+	{
+		printf("%d ", node_temp->value);
+		node_temp = node_temp->prev;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_data data;
-	if (argc == 1)
-		return (0);
-	create_stack(&data.stack_a, &data.stack_b);
-	check_argv(argc, argv, &data.stack_a);
-	data.array_temp = malloc(sizeof(int) * (argc - 1));
-	add_argv_to_stack(argv, &data.stack_a, data.array_temp);
-	handle_list(&data.stack_a, &data.stack_b, data.array_temp);
-	delete_all(&data.stack_a);
-	delete_all(&data.stack_b);
-	free(data.array_temp);
+	t_data	data;
+
+	check_arguments(argv);
+	ft_bzero(&data, sizeof(t_data));
+	add_argv_to_stack(argc, argv, &data);
+	handle_stack(&data.stack_a, &data.stack_b, data.array_temp);
+	delete_data(&data);
 	return (0);
 }

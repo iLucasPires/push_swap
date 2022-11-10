@@ -3,17 +3,17 @@ HEADER =	-I ./include
 OBJ_DIR =	./objects
 LIBFT =	./libft/libft.a
 
-SOURCES  =	main.c movements_a.c movements_b.c sort_stack.c check_arguments.c check_stack.c 
-SOURCES +=	create_node.c delete_node.c display_node.c double_movements.c normalize.c quick_sort.c
+SOURCES  =	main.c movements.c sort_stack.c check_arguments.c check_stack.c
+SOURCES +=	create_node.c delete_node.c double_movements.c quick_sort.c radix_sort.c
 OBJ		=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES))
 CFLAGS =	cc -g3 -O3 
-VPATH = ./sources ./sources/linked_list ./sources/operations ./sources/sort 
+VPATH = ./sources ./sources/linked_list ./sources/operations ./sources/sort ./sources/check ./sources/aux
 
-NUMBERS =  6 5 3 1 9 7 45 12 54 65
+NUMBERS = 2 72 92 40 59 66 -0
 all: $(NAME)
 
-run: $(NAME)
-	./push_swap $(NUMBERS)
+run: re $(NAME)
+	./push_swap $(NUMBERS) 
 
 test: $(NAME)
 	./push_swap $(NUMBERS) | ./checker_linux $(NUMBERS)
@@ -33,6 +33,7 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	rm -rf $(OBJ_DIR)
+	make clean -C ./libft
 
 fclean: clean
 	rm -f $(NAME)
