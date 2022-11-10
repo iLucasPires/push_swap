@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 03:58:58 by  lpires-n         #+#    #+#             */
+/*   Updated: 2022/11/10 15:20:15 by  lpires-n        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
+
+void	error_exit(char *message)
+{
+	ft_putstr_fd(message, 2);
+	exit(EXIT_SUCCESS);
+}
 
 static void	check_overflow(char **argv)
 {
@@ -7,14 +25,14 @@ static void	check_overflow(char **argv)
 	index = 1;
 	while (argv[index])
 	{
+		if (ft_strlen(argv[index]) > 11)
+			error_exit("Error\n");
 		if (ft_strlen(argv[index]) >= 10)
 		{
-			if ((ft_strncmp(argv[index], MAX_INT, 10) > 0
-				|| ft_strncmp(argv[index], MIN_INT, 10) < 0 ))
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(EXIT_SUCCESS);
-			}
+			if (ft_strncmp(argv[index], "2147483647", 10) > 0)
+				error_exit("Error\n");
+			if (ft_strncmp(argv[index], "-2147483648", 11) > 0)
+				error_exit("Error\n");
 		}
 		index++;
 	}
@@ -56,13 +74,12 @@ static void	check_is_sorting(char **argv)
 		}
 		index += 1;
 	}
-	ft_putstr_fd("error\n", 1);
 	exit(EXIT_SUCCESS);
 }
 
 void	check_arguments(char **argv)
-{	
-	int index;
+{
+	int	index;
 
 	index = 1;
 	while (argv[index] != NULL)
@@ -77,20 +94,4 @@ void	check_arguments(char **argv)
 	check_overflow(argv);
 	check_duplicate(argv);
 	check_is_sorting(argv);
-}
-
-void	add_argv_to_stack(int argc, char **argv, t_data *data)
-{
-	int	index;
-	int	value_temp;
-
-	index = 1;
-	data->array_temp = (int *)malloc(sizeof(int) * (argc - 1));
-	while (argv[index] != NULL)
-	{
-		value_temp = ft_atoi(argv[index]);
-		data->array_temp[index - 1] = value_temp;
-		insert_at_tail(value_temp, 0, &data->stack_a);
-		index++;
-	}
 }

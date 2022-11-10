@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpires-n <lpires-n@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:50:34 by lpires-n          #+#    #+#             */
-/*   Updated: 2022/09/11 18:37:00 by lpires-n         ###   ########.fr       */
+/*   Updated: 2022/11/10 04:01:31 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isnumber(const char *s)
 {
-	int verify;
+	int	verify;
 
 	verify = 0;
 	if (((*s == '-') || (*s == '+')) && !ft_isdigit(*(s + 1)))

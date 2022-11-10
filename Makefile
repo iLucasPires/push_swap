@@ -9,7 +9,7 @@ OBJ		=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES))
 CFLAGS =	cc -g3 -O3 
 VPATH = ./sources ./sources/linked_list ./sources/operations ./sources/sort ./sources/check ./sources/aux
 
-NUMBERS = 2 72 92 40 59 66 -0
+NUMBERS = 0 1 2 3 2147483649 5 6 7 8 9
 all: $(NAME)
 
 run: re $(NAME)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 03:59:39 by  lpires-n         #+#    #+#             */
+/*   Updated: 2022/11/10 15:58:00 by  lpires-n        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	handle_stack(t_stack *stack_a, t_stack *stack_b, int *array_temp)
@@ -19,15 +31,19 @@ void	handle_stack(t_stack *stack_a, t_stack *stack_b, int *array_temp)
 	}
 }
 
-void	show_stack(t_stack *stack)
+void	add_argv_to_stack(int argc, char **argv, t_data *data)
 {
-	t_node	*node_temp;
+	int	index;
+	int	value_temp;
 
-	node_temp = stack->tail;
-	while (node_temp != NULL)
+	index = 1;
+	data->array_temp = (int *)malloc(sizeof(int) * (argc - 1));
+	while (argv[index] != NULL)
 	{
-		printf("%d ", node_temp->value);
-		node_temp = node_temp->prev;
+		value_temp = ft_atoi(argv[index]);
+		data->array_temp[index - 1] = value_temp;
+		insert_at_tail(value_temp, 0, &data->stack_a);
+		index++;
 	}
 }
 
@@ -39,6 +55,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&data, sizeof(t_data));
 	add_argv_to_stack(argc, argv, &data);
 	handle_stack(&data.stack_a, &data.stack_b, data.array_temp);
+	show_stack(&data.stack_a);
 	delete_data(&data);
 	return (0);
 }

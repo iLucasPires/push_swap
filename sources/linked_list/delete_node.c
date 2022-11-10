@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_node.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 03:58:50 by  lpires-n         #+#    #+#             */
+/*   Updated: 2022/11/10 03:59:49 by  lpires-n        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	delete_stack(t_stack *stack)
 {
-	t_node *node_temp;
+	t_node	*node_temp;
 
 	if (stack->head == NULL)
 		return ;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 03:58:48 by  lpires-n         #+#    #+#             */
+/*   Updated: 2022/11/10 04:00:02 by  lpires-n        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	swap_stack(t_stack *stack, char *str)
@@ -53,7 +65,7 @@ void	rotate_stack(t_stack *stack, char *str)
 
 void	rotate_reverse_stack(t_stack *stack, char *str)
 {
-	int value_temp[2];
+	int	value_temp[2];
 
 	if (stack->head == NULL || stack->head->next == NULL)
 		return ;
