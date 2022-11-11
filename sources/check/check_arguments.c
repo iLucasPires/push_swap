@@ -6,7 +6,7 @@
 /*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:58:58 by  lpires-n         #+#    #+#             */
-/*   Updated: 2022/11/10 21:37:07 by  lpires-n        ###   ########.fr       */
+/*   Updated: 2022/11/11 15:17:15 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(char *message)
 {
-	ft_putstr_fd(message, 2);
+	ft_putstr_fd(message, STDERR_FILENO);
 	exit(EXIT_SUCCESS);
 }
 
@@ -23,10 +23,8 @@ static void	check_overflow(char **argv)
 	long long int	keep;
 	int				neg;
 	int				i;
-	int				j;
 
 	i = 0;
-	j = 0;
 	neg = 0;
 	while (argv[++i])
 	{
@@ -53,9 +51,7 @@ static void	check_duplicate(char **argv)
 		while (argv[column] != NULL)
 		{
 			if (ft_atoi(argv[line]) == ft_atoi(argv[column]))
-			{
 				error_exit("Error\n");
-			}
 			column++;
 		}
 		line++;
@@ -70,11 +66,9 @@ static void	check_is_sorting(char **argv)
 	while (argv[index + 1] != NULL)
 	{
 		if (ft_isnumber(argv[index]) && ft_isnumber(argv[index + 1]))
-		{
 			if (ft_atoi(argv[index]) > ft_atoi(argv[index + 1]))
 				return ;
-		}
-		index += 1;
+		index++;
 	}
 	exit(EXIT_SUCCESS);
 }
@@ -87,10 +81,7 @@ void	check_arguments(char **argv)
 	while (argv[index] != NULL)
 	{
 		if (!ft_isnumber(argv[index]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_SUCCESS);
-		}
+			error_exit("Error\n");
 		index++;
 	}
 	check_overflow(argv);
