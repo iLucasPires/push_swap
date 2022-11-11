@@ -6,7 +6,7 @@
 /*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:59:05 by  lpires-n         #+#    #+#             */
-/*   Updated: 2022/11/10 03:59:18 by  lpires-n        ###   ########.fr       */
+/*   Updated: 2022/11/10 19:50:31 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include <stdlib.h>	
 # define A 0
 # define B 1
 # define MAX_INT "2147483647"
-# define MIN_INT "-2147483648"
+# define MIN_INT "2147483648"
 
 enum				e_bool
 {
@@ -76,11 +74,8 @@ void				same_rotate_reverse(t_stack *stack_a, t_stack *stack_b);
 int					check_is_stack_sorting(t_stack *stack);
 int					get_postion_lower_number(t_stack *stack);
 int					get_postion_bigger_number(t_stack *stack);
-void				add_argv_to_stack(int argc, char **argv, t_data *data);
 
 void				quick_sort(int *array, int low, int high);
-void				more_than_five(t_stack *stack_a, t_stack *stack_b,
-						int *array_temp);
 void				mappping_index_stack(t_stack *stack, int *array_temp);
 void				radix_sort(t_stack *stack_a, t_stack *stack_b);
 

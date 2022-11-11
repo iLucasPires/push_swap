@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoli.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 04:41:31 by lpires-n          #+#    #+#             */
-/*   Updated: 2022/11/10 20:31:00 by  lpires-n        ###   ########.fr       */
+/*   Created: 2022/11/10 20:29:37 by  lpires-n         #+#    #+#             */
+/*   Updated: 2022/11/10 21:36:43 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long long int	ft_atolli(const char *nptr)
 {
-	int	signal;
-	int	result;
+	int				signal;
+	long long int	result;
 
 	result = 0;
 	while ((*nptr >= 9 && *nptr <= 13) || (*nptr == ' '))

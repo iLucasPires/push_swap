@@ -6,7 +6,7 @@
 /*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:59:39 by  lpires-n         #+#    #+#             */
-/*   Updated: 2022/11/10 15:58:00 by  lpires-n        ###   ########.fr       */
+/*   Updated: 2022/11/10 21:32:43 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int argc, char **argv)
 	ft_bzero(&data, sizeof(t_data));
 	add_argv_to_stack(argc, argv, &data);
 	handle_stack(&data.stack_a, &data.stack_b, data.array_temp);
-	show_stack(&data.stack_a);
 	delete_data(&data);
 	return (0);
 }

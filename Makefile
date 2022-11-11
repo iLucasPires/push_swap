@@ -9,11 +9,11 @@ OBJ		=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SOURCES))
 CFLAGS =	cc -g3 -O3 
 VPATH = ./sources ./sources/linked_list ./sources/operations ./sources/sort ./sources/check ./sources/aux
 
-NUMBERS = 0 1 2 3 2147483649 5 6 7 8 9
+NUMBERS = -2147483648 0 -2147483647 2147483647 9487 
 all: $(NAME)
 
 run: re $(NAME)
-	./push_swap $(NUMBERS) 
+	./push_swap $(NUMBERS)
 
 test: $(NAME)
 	./push_swap $(NUMBERS) | ./checker_linux $(NUMBERS)

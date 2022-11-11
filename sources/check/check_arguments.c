@@ -6,7 +6,7 @@
 /*   By:  lpires-n < lpires-n@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:58:58 by  lpires-n         #+#    #+#             */
-/*   Updated: 2022/11/10 15:20:15 by  lpires-n        ###   ########.fr       */
+/*   Updated: 2022/11/10 21:37:07 by  lpires-n        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,24 @@ void	error_exit(char *message)
 
 static void	check_overflow(char **argv)
 {
-	int	index;
+	long long int	keep;
+	int				neg;
+	int				i;
+	int				j;
 
-	index = 1;
-	while (argv[index])
+	i = 0;
+	j = 0;
+	neg = 0;
+	while (argv[++i])
 	{
-		if (ft_strlen(argv[index]) > 11)
+		if (ft_strlen(argv[i]) > 11)
 			error_exit("Error\n");
-		if (ft_strlen(argv[index]) >= 10)
+		if (ft_strlen(argv[i]) >= 10)
 		{
-			if (ft_strncmp(argv[index], "2147483647", 10) > 0)
-				error_exit("Error\n");
-			if (ft_strncmp(argv[index], "-2147483648", 11) > 0)
+			keep = ft_atolli(argv[i]);
+			if (keep > 2147483647 || keep < -2147483648)
 				error_exit("Error\n");
 		}
-		index++;
 	}
 }
 
@@ -51,8 +54,7 @@ static void	check_duplicate(char **argv)
 		{
 			if (ft_atoi(argv[line]) == ft_atoi(argv[column]))
 			{
-				ft_putstr_fd("Error\n", 2);
-				exit(EXIT_SUCCESS);
+				error_exit("Error\n");
 			}
 			column++;
 		}
