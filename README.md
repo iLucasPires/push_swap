@@ -32,11 +32,11 @@ This project is about sorting data on a stack, with a limited set of instruction
 one to five arguments
 
 ``` bash
-$> ./push_swap 4 1 2 3 5
+./push_swap 4 1 2 3 5
 ```
 
 more than five arguments
 
 ``` bash
-$> ./push_swap 4 1 2 3 5 6 7 8 9 10
+./push_swap 4 1 2 3 5 6 7 8 9 10
 ```
